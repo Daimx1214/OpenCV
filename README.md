@@ -67,7 +67,7 @@ OpenCV/
 ### Where is my data saved?
 All records, face images, and snapshots are saved under:
 ```
-Documents\OpenCV_Data\
+C:\Users\Daim Ali\OpenCV_Data\
 ├── Faces\          # Cropped face images
 ├── records.json    # All registered records
 └── records.csv     # Same data, Excel-friendly

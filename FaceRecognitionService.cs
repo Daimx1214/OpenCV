@@ -19,13 +19,13 @@ namespace OpenCV
 
         public FaceRecognitionService()
         {
-            // IMPORTANT: This used to be a hardcoded path (C:\Users\Daim Ali\OpenCV_Data),
-            // which only worked on one specific computer/user account. On any other PC,
-            // or if that folder wasn't writable, saving would silently fail.
-            // Using "My Documents" instead makes it work on any machine, for any user,
-            // without needing Administrator rights.
-            string documentsFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            _storageDir = Path.Combine(documentsFolder, "OpenCV_Data");
+            // Storage directory set to C:\Users\Daim Ali\OpenCV_Data
+            string userProfileFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            _storageDir = Path.Combine(userProfileFolder, "OpenCV_Data");
+            if (!Directory.Exists(_storageDir))
+            {
+                _storageDir = @"C:\Users\Daim Ali\OpenCV_Data";
+            }
             _facesDir = Path.Combine(_storageDir, "Faces");
             _dbFilePath = Path.Combine(_storageDir, "records.json");
             _excelCsvPath = Path.Combine(_storageDir, "records.csv");
